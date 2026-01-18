@@ -1,0 +1,741 @@
+/* ========================================= */
+/* NEXUS CALCULATOR - STYLES CSS */
+/* ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+    --primary: #00f0ff;
+    --secondary: #ff0080;
+    --dark: #0a0e1a;
+    --surface: #151b2e;
+    --surface-light: #1e2940;
+    --text: #e8edf5;
+    --text-dim: #8b95ab;
+    --success: #00ff88;
+    --error: #ff4466;
+    --warning: #ffaa00;
+    --ad-bg: #1a2035;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    position: fixed;
+    width: 100%;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1142 50%, #0a0e1a 100%);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Animated background */
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================= */
+/* AD BLOCKS STYLES */
+/* ========================================= */
+
+.ad-block {
+    background: var(--ad-bg);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.ad-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 170, 0, 0.05), rgba(255, 0, 128, 0.05));
+    pointer-events: none;
+}
+
+.ad-content {
+    text-align: center;
+    padding: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.ad-label {
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    opacity: 0.6;
+}
+
+.ad-placeholder {
+    color: var(--warning);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Top Banner Ad */
+.ad-top-banner {
+    width: 100%;
+    min-height: 90px;
+    flex-shrink: 0;
+}
+
+/* Sidebar Ad (Desktop only) */
+.ad-sidebar {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 600px;
+    display: none;
+}
+
+/* Bottom Sticky Ad (Mobile only) */
+.ad-bottom-sticky {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.ad-bottom-sticky .ad-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 68, 102, 0.8);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Inline Ad */
+.ad-inline {
+    width: 100%;
+    min-height: 120px;
+    margin: 12px 0;
+}
+
+/* Native Ad Card */
+.ad-native {
+    background: var(--ad-bg);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 12px 0;
+}
+
+.ad-native-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.ad-native-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.ad-native-title {
+    flex: 1;
+}
+
+.ad-native-title h4 {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 2px;
+}
+
+.ad-native-title p {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+.ad-native-body {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.ad-native-cta {
+    display: inline-block;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.ad-native-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 240, 255, 0.3);
+}
+
+/* ========================================= */
+/* MAIN APP STYLES */
+/* ========================================= */
+
+.app-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(21, 27, 46, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, rgba(255, 0, 128, 0.05) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.title {
+    font-size: 15px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 9px;
+    color: var(--text-dim);
+    font-weight: 400;
+}
+
+.live-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--primary);
+    padding: 4px 10px;
+    background: rgba(0, 240, 255, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.tab.active {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2));
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+/* Content area */
+.content {
+    flex: 1;
+    padding: 12px 16px 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 70px;
+}
+
+.view {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.view.active {
+    display: flex;
+}
+
+/* Display */
+.display-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.display {
+    background: var(--surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    text-align: right;
+    color: var(--primary);
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.display.secondary {
+    font-size: 18px;
+    color: var(--secondary);
+    border-color: rgba(255, 0, 128, 0.3);
+    min-height: 48px;
+}
+
+.display-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: -2px;
+}
+
+/* Calculator grid */
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    flex: 1;
+}
+
+.calc-btn {
+    background: var(--surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.calc-btn:active {
+    transform: scale(0.95);
+    background: var(--surface);
+}
+
+.calc-btn.operator {
+    background: rgba(255, 0, 128, 0.15);
+    border-color: rgba(255, 0, 128, 0.3);
+    color: var(--secondary);
+}
+
+.calc-btn.function {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: rgba(0, 240, 255, 0.3);
+    color: var(--primary);
+}
+
+.calc-btn.clear {
+    background: rgba(255, 68, 102, 0.2);
+    color: var(--error);
+}
+
+.calc-btn.equals {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    color: white;
+    font-size: 22px;
+    grid-column: span 3;
+}
+
+/* Converter */
+.converter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.input-group {
+    flex: 1;
+}
+
+.label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+select {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.swap-btn {
+    min-width: 44px;
+    height: 44px;
+    background: var(--surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--primary);
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.swap-btn:active {
+    transform: rotate(180deg) scale(0.9);
+}
+
+.result-card {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(255, 0, 128, 0.05));
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.result-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.result-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--primary);
+    word-break: break-all;
+}
+
+/* History */
+.history {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 12px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.history-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.history-item {
+    padding: 8px 10px;
+    background: var(--surface-light);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.history-item:active {
+    background: rgba(0, 240, 255, 0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* ========================================= */
+/* RESPONSIVE DESIGN */
+/* ========================================= */
+
+/* Desktop */
+@media (min-width: 769px) {
+    .app-container {
+        width: 96vw;
+        max-width: 1100px;
+        height: 94vh;
+        max-height: 820px;
+        border-radius: 24px;
+    }
+
+    .header {
+        padding: 16px 24px;
+    }
+
+    .tabs {
+        padding: 16px 24px;
+    }
+
+    .content {
+        padding: 24px;
+        gap: 16px;
+        padding-bottom: 24px;
+    }
+
+    .calc-btn {
+        min-height: 56px;
+        font-size: 20px;
+    }
+
+    .calc-btn:hover {
+        background: var(--surface);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .swap-btn:hover {
+        background: rgba(0, 240, 255, 0.1);
+        transform: rotate(180deg);
+    }
+
+    .history-item:hover {
+        background: rgba(0, 240, 255, 0.1);
+        transform: translateX(4px);
+    }
+
+    .ad-sidebar {
+        display: block;
+    }
+
+    .ad-top-banner {
+        min-height: 100px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .ad-bottom-sticky {
+        display: flex;
+    }
+
+    .content {
+        padding-bottom: 70px;
+    }
+}
+
+/* Very small phones */
+@media (max-height: 700px) {
+    .header {
+        padding: 6px 12px;
+    }
+
+    .tabs {
+        padding: 6px 12px;
+    }
+
+    .content {
+        padding: 10px 12px 70px;
+    }
+
+    .calc-btn {
+        min-height: 48px;
+        font-size: 16px;
+    }
+
+    .display {
+        min-height: 46px;
+        font-size: 20px;
+        padding: 10px 14px;
+    }
+
+    .display.secondary {
+        min-height: 42px;
+        font-size: 16px;
+    }
+
+    .display-group {
+        gap: 8px;
+    }
+
+    .calc-grid {
+        gap: 6px;
+    }
+
+    .result-value {
+        font-size: 22px;
+    }
+
+    .ad-top-banner {
+        min-height: 70px;
+    }
+
+    .ad-inline {
+        min-height: 100px;
+    }
+}
+
+@media (max-height: 650px) {
+    .header {
+        padding: 4px 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .title {
+        font-size: 13px;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .live-time {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .tabs {
+        padding: 5px 10px;
+    }
+
+    .tab {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .calc-btn {
+        min-height: 44px;
+        font-size: 15px;
+    }
+
+    .calc-btn.equals {
+        font-size: 18px;
+    }
+
+    .display {
+        min-height: 42px;
+        font-size: 18px;
+    }
+
+    .display.secondary {
+        min-height: 38px;
+        font-size: 15px;
+    }
+}
