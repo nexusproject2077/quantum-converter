@@ -16,19 +16,29 @@ if (navToggle) {
 }
 
 // === CHANGEMENT D'ONGLETS ===
-function switchTab(tab) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+const calcView = document.getElementById('calcView');
+const convertView = document.getElementById('convertView');
+const tabButtons = document.querySelectorAll('.tab[data-tab]');
 
-    if (tab === 'calc') {
-        document.querySelectorAll('.tab')[0].classList.add('active');
-        document.getElementById('calcView').classList.add('active');
-    } else {
-        document.querySelectorAll('.tab')[1].classList.add('active');
-        document.getElementById('convertView').classList.add('active');
-        updateConvertDisplay();
-    }
-}
+tabButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var tab = this.getAttribute('data-tab');
+
+        // Toggle active sur les boutons
+        tabButtons.forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+
+        // Toggle active sur les vues
+        if (tab === 'calc') {
+            calcView.style.display = 'flex';
+            convertView.style.display = 'none';
+        } else {
+            calcView.style.display = 'none';
+            convertView.style.display = 'flex';
+            updateConvertDisplay();
+        }
+    });
+});
 
 // ========================================= //
 // CALCULATRICE
