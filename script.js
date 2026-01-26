@@ -1,25 +1,25 @@
-// === HORLOGE EN TEMPS RÉEL ===
-function updateTime() {
-    const now = new Date();
-    const time = now.toLocaleTimeString('fr-FR');
-    document.getElementById('liveTime').textContent = time;
-}
+// === NAVIGATION MOBILE TOGGLE ===
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
 
-setInterval(updateTime, 1000);
-updateTime();
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
 
-// === FERMER LA PUB STICKY ===
-function closeStickyAd() {
-    const ad = document.getElementById('stickyAd');
-    ad.style.display = 'none';
-    document.querySelector('.content').style.paddingBottom = '16px';
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+        });
+    });
 }
 
 // === CHANGEMENT D'ONGLETS ===
 function switchTab(tab) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    
+
     if (tab === 'calc') {
         document.querySelectorAll('.tab')[0].classList.add('active');
         document.getElementById('calcView').classList.add('active');
@@ -59,7 +59,7 @@ document.querySelectorAll('.calc-btn').forEach(btn => {
             isNewInput = false;
         } else if (action === 'equals') {
             try {
-                const result = eval(calcExpression.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-'));
+                const result = eval(calcExpression.replace(/\u00d7/g, '*').replace(/\u00f7/g, '/').replace(/\u2212/g, '-'));
                 calcResult = result.toString();
                 calcExpression = calcResult;
                 isNewInput = true;
@@ -77,9 +77,9 @@ document.querySelectorAll('.calc-btn').forEach(btn => {
                     calcExpression += value;
                 }
             }
-            
+
             try {
-                const tempResult = eval(calcExpression.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-'));
+                const tempResult = eval(calcExpression.replace(/\u00d7/g, '*').replace(/\u00f7/g, '/').replace(/\u2212/g, '-'));
                 calcResult = tempResult.toString();
             } catch {
                 calcResult = '...';
@@ -107,16 +107,16 @@ const units = {
         'in': { name: 'Pouces', factor: 0.0254 }
     },
     area: {
-        'm²': { name: 'Mètres carrés', factor: 1 },
-        'km²': { name: 'Kilomètres carrés', factor: 1000000 },
+        'm\u00b2': { name: 'Mètres carrés', factor: 1 },
+        'km\u00b2': { name: 'Kilomètres carrés', factor: 1000000 },
         'ha': { name: 'Hectares', factor: 10000 },
-        'cm²': { name: 'Centimètres carrés', factor: 0.0001 },
-        'ft²': { name: 'Pieds carrés', factor: 0.092903 }
+        'cm\u00b2': { name: 'Centimètres carrés', factor: 0.0001 },
+        'ft\u00b2': { name: 'Pieds carrés', factor: 0.092903 }
     },
     volume: {
         'l': { name: 'Litres', factor: 1 },
         'ml': { name: 'Millilitres', factor: 0.001 },
-        'm³': { name: 'Mètres cubes', factor: 1000 },
+        'm\u00b3': { name: 'Mètres cubes', factor: 1000 },
         'gal': { name: 'Gallons US', factor: 3.78541 }
     },
     mass: {
@@ -162,21 +162,21 @@ let history = [];
 function updateUnits() {
     const category = categoryEl.value;
     const categoryUnits = units[category];
-    
+
     fromUnitEl.innerHTML = '';
     toUnitEl.innerHTML = '';
-    
+
     Object.entries(categoryUnits).forEach(([key, data]) => {
         const option1 = new Option(`${data.name} (${key})`, key);
         const option2 = new Option(`${data.name} (${key})`, key);
         fromUnitEl.add(option1);
         toUnitEl.add(option2);
     });
-    
+
     if (toUnitEl.options.length > 1) {
         toUnitEl.selectedIndex = 1;
     }
-    
+
     convert();
 }
 
@@ -185,18 +185,18 @@ function convert() {
     const category = categoryEl.value;
     const from = fromUnitEl.value;
     const to = toUnitEl.value;
-    
+
     if (category === 'temperature') {
         let celsius;
         if (from === 'C') celsius = value;
         else if (from === 'F') celsius = (value - 32) * 5/9;
         else celsius = value - 273.15;
-        
+
         let result;
         if (to === 'C') result = celsius;
         else if (to === 'F') result = celsius * 9/5 + 32;
         else result = celsius + 273.15;
-        
+
         resultDisplayEl.textContent = `${result.toFixed(2)} ${to}`;
     } else {
         const fromFactor = units[category][from].factor;
@@ -204,7 +204,7 @@ function convert() {
         const result = (value * fromFactor) / toFactor;
         resultDisplayEl.textContent = `${result.toFixed(6)} ${to}`;
     }
-    
+
     addToHistory(value, from, resultDisplayEl.textContent, category);
 }
 
@@ -214,10 +214,10 @@ function updateConvertDisplay() {
 }
 
 function addToHistory(value, from, to, category) {
-    const entry = `${value} ${from} → ${to}`;
+    const entry = `${value} ${from} \u2192 ${to}`;
     history.unshift(entry);
     history = history.slice(0, 5);
-    
+
     const historyHTML = history.map(h => `<div class="history-item">${h}</div>`).join('');
     document.getElementById('historyList').innerHTML = historyHTML || '<div style="text-align: center; color: var(--text-dim); font-size: 12px;">Aucun historique</div>';
 }

@@ -2,182 +2,452 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5825303311354202"
          crossorigin="anonymous"></script>
-    
-    <title>Nexus Calculator Pro - Calculatrice & Convertisseur Gratuit</title>
-    <meta name="description" content="Calculatrice scientifique et convertisseur d'unités gratuit en ligne. Calculs instantanés, conversions précises, sans inscription.">
-    
+
+    <title>Nexus Calculator Pro - Calculatrice Scientifique & Convertisseur d'Unités Gratuit en Ligne</title>
+    <meta name="description" content="Calculatrice scientifique gratuite en ligne avec convertisseur d'unités complet. Guide des formules mathématiques, tableaux de conversion, astuces de calcul. Outil rapide, précis et sans inscription.">
+    <meta name="keywords" content="calculatrice en ligne, convertisseur unités, calcul scientifique, conversion température, conversion longueur, formules mathématiques">
+    <meta name="author" content="Nexus Calculator Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nexus-calculator.onrender.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Nexus Calculator Pro - Calculatrice & Convertisseur Gratuit">
+    <meta property="og:description" content="Calculatrice scientifique et convertisseur d'unités gratuit. Formules, guides et tableaux de conversion complets.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexus-calculator.onrender.com/">
+
     <!-- Styles CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Top Banner Ad -->
-        <div class="ad-block ad-top-banner">
-            <div class="ad-content">
-                <div class="ad-label">Publicité</div>
-                <div class="ad-placeholder">📢 Espace Publicitaire - 728x90 (Desktop) / 320x50 (Mobile)</div>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="nav-logo">&#9889;</span>
+                <span class="nav-title">Nexus Calculator Pro</span>
             </div>
-        </div>
-
-        <!-- Header -->
-        <div class="header">
-            <div class="header-left">
-                <div class="logo">⚡</div>
-                <div>
-                    <div class="title">Nexus Calculator</div>
-                    <div class="subtitle">Calculateur & Convertisseur Gratuit</div>
-                </div>
+            <div class="nav-links">
+                <a href="#calculatrice" class="nav-link">Calculatrice</a>
+                <a href="#convertisseur" class="nav-link">Convertisseur</a>
+                <a href="#guide" class="nav-link">Guide</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#a-propos" class="nav-link">À propos</a>
             </div>
-            <div class="live-time" id="liveTime">00:00:00</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
         </div>
+    </nav>
 
-        <!-- Tabs -->
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab('calc')">
-                🔢 Calculatrice
-            </button>
-            <button class="tab" onclick="switchTab('convert')">
-                🔄 Convertisseur
-            </button>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h1>Calculatrice Scientifique & Convertisseur d'Unités Gratuit</h1>
+            <p class="hero-subtitle">Effectuez vos calculs mathématiques et conversions d'unités instantanément. Un outil en ligne gratuit, rapide et précis, accessible depuis n'importe quel appareil.</p>
         </div>
+    </header>
 
-        <!-- Content -->
-        <div class="content">
-            <!-- Calculator View -->
-            <div class="view active" id="calcView">
-                <div class="display-group">
-                    <div>
-                        <div class="display-label">Expression</div>
-                        <div class="display" id="calcDisplay">0</div>
+    <main class="container">
+        <!-- Calculator Section -->
+        <section id="calculatrice" class="tool-section">
+            <div class="tool-card">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('calc')">&#128290; Calculatrice</button>
+                    <button class="tab" onclick="switchTab('convert')">&#128260; Convertisseur</button>
+                </div>
+
+                <!-- Calculator View -->
+                <div class="view active" id="calcView">
+                    <div class="display-group">
+                        <div>
+                            <div class="display-label">Expression</div>
+                            <div class="display" id="calcDisplay">0</div>
+                        </div>
+                        <div>
+                            <div class="display-label">Résultat</div>
+                            <div class="display secondary" id="calcResult">0</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="display-label">Résultat</div>
-                        <div class="display secondary" id="calcResult">0</div>
+
+                    <div class="calc-grid">
+                        <button class="calc-btn clear" data-action="clear">C</button>
+                        <button class="calc-btn function" data-value="(">(</button>
+                        <button class="calc-btn function" data-value=")">)</button>
+                        <button class="calc-btn operator" data-value="/">&#247;</button>
+
+                        <button class="calc-btn" data-value="7">7</button>
+                        <button class="calc-btn" data-value="8">8</button>
+                        <button class="calc-btn" data-value="9">9</button>
+                        <button class="calc-btn operator" data-value="*">&times;</button>
+
+                        <button class="calc-btn" data-value="4">4</button>
+                        <button class="calc-btn" data-value="5">5</button>
+                        <button class="calc-btn" data-value="6">6</button>
+                        <button class="calc-btn operator" data-value="-">&minus;</button>
+
+                        <button class="calc-btn" data-value="1">1</button>
+                        <button class="calc-btn" data-value="2">2</button>
+                        <button class="calc-btn" data-value="3">3</button>
+                        <button class="calc-btn operator" data-value="+">+</button>
+
+                        <button class="calc-btn function" data-action="backspace">&#9003;</button>
+                        <button class="calc-btn" data-value="0">0</button>
+                        <button class="calc-btn" data-value=".">.</button>
+                        <button class="calc-btn equals" data-action="equals">=</button>
                     </div>
                 </div>
 
-                <!-- Inline Ad -->
-                <div class="ad-block ad-inline">
-                    <div class="ad-content">
-                        <div class="ad-label">Publicité</div>
-                        <div class="ad-placeholder">💰 Espace Publicitaire - 300x100</div>
-                    </div>
-                </div>
+                <!-- Converter View -->
+                <div class="view" id="convertView">
+                    <div class="converter-section">
+                        <div class="input-group">
+                            <div class="label">Catégorie</div>
+                            <select id="category">
+                                <option value="length">&#128207; Longueur</option>
+                                <option value="area">&#128208; Aire</option>
+                                <option value="volume">&#129482; Volume</option>
+                                <option value="mass">&#9878;&#65039; Masse</option>
+                                <option value="temperature">&#127777;&#65039; Température</option>
+                                <option value="speed">&#128640; Vitesse</option>
+                                <option value="time">&#9201;&#65039; Temps</option>
+                                <option value="data">&#128190; Données</option>
+                            </select>
+                        </div>
 
-                <div class="calc-grid">
-                    <button class="calc-btn clear" data-action="clear">C</button>
-                    <button class="calc-btn function" data-value="(">(</button>
-                    <button class="calc-btn function" data-value=")">)</button>
-                    <button class="calc-btn operator" data-value="/">÷</button>
+                        <div>
+                            <div class="label">Valeur à convertir</div>
+                            <div class="display" id="convertValue">0</div>
+                        </div>
 
-                    <button class="calc-btn" data-value="7">7</button>
-                    <button class="calc-btn" data-value="8">8</button>
-                    <button class="calc-btn" data-value="9">9</button>
-                    <button class="calc-btn operator" data-value="*">×</button>
-
-                    <button class="calc-btn" data-value="4">4</button>
-                    <button class="calc-btn" data-value="5">5</button>
-                    <button class="calc-btn" data-value="6">6</button>
-                    <button class="calc-btn operator" data-value="-">−</button>
-
-                    <button class="calc-btn" data-value="1">1</button>
-                    <button class="calc-btn" data-value="2">2</button>
-                    <button class="calc-btn" data-value="3">3</button>
-                    <button class="calc-btn operator" data-value="+">+</button>
-
-                    <button class="calc-btn function" data-action="backspace">⌫</button>
-                    <button class="calc-btn" data-value="0">0</button>
-                    <button class="calc-btn" data-value=".">.</button>
-                    <button class="calc-btn equals" data-action="equals">=</button>
-                </div>
-            </div>
-
-            <!-- Converter View -->
-            <div class="view" id="convertView">
-                <div class="converter-section">
-                    <div class="input-group">
-                        <div class="label">Catégorie</div>
-                        <select id="category">
-                            <option value="length">📏 Longueur</option>
-                            <option value="area">📐 Aire</option>
-                            <option value="volume">🧊 Volume</option>
-                            <option value="mass">⚖️ Masse</option>
-                            <option value="temperature">🌡️ Température</option>
-                            <option value="speed">🚀 Vitesse</option>
-                            <option value="time">⏱️ Temps</option>
-                            <option value="data">💾 Données</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <div class="label">Valeur à convertir</div>
-                        <div class="display" id="convertValue">0</div>
-                    </div>
-
-                    <!-- Native Ad Card -->
-                    <div class="ad-native">
-                        <div class="ad-native-header">
-                            <div class="ad-native-icon">📱</div>
-                            <div class="ad-native-title">
-                                <h4>Calculatrice Scientifique Premium</h4>
-                                <p>Sponsorisé • Publicité</p>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <div class="label">De</div>
+                                <select id="fromUnit"></select>
+                            </div>
+                            <button class="swap-btn" id="swapBtn">&#8644;</button>
+                            <div class="input-group">
+                                <div class="label">Vers</div>
+                                <select id="toUnit"></select>
                             </div>
                         </div>
-                        <div class="ad-native-body">
-                            Passez à la version premium pour débloquer des fonctionnalités avancées : calculs illimités, historique cloud, mode hors ligne et bien plus !
-                        </div>
-                        <a href="#" class="ad-native-cta" onclick="alert('Lien vers page premium'); return false;">En savoir plus →</a>
-                    </div>
 
-                    <div class="input-row">
-                        <div class="input-group">
-                            <div class="label">De</div>
-                            <select id="fromUnit"></select>
+                        <div class="result-card">
+                            <div class="result-label">Résultat</div>
+                            <div class="result-value" id="resultDisplay">---</div>
                         </div>
-                        <button class="swap-btn" id="swapBtn">⇄</button>
-                        <div class="input-group">
-                            <div class="label">Vers</div>
-                            <select id="toUnit"></select>
-                        </div>
-                    </div>
 
-                    <div class="result-card">
-                        <div class="result-label">Résultat</div>
-                        <div class="result-value" id="resultDisplay">---</div>
-                    </div>
-
-                    <div class="history">
-                        <div class="history-title">Historique récent</div>
-                        <div id="historyList">
-                            <div style="text-align: center; color: var(--text-dim); font-size: 12px;">Aucun historique</div>
+                        <div class="history">
+                            <div class="history-title">Historique récent</div>
+                            <div id="historyList">
+                                <div style="text-align: center; color: var(--text-dim); font-size: 12px;">Aucun historique</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- Sidebar Ad (Desktop only) -->
-    <div class="ad-block ad-sidebar">
-        <div class="ad-content">
-            <div class="ad-label">Publicité</div>
-            <div class="ad-placeholder" style="writing-mode: vertical-rl;">📊 Skyscraper 160x600</div>
-        </div>
-    </div>
+        <!-- How to Use Section -->
+        <section id="guide" class="content-section">
+            <h2>Comment utiliser Nexus Calculator Pro</h2>
 
-    <!-- Bottom Sticky Ad (Mobile only) -->
-    <div class="ad-block ad-bottom-sticky" id="stickyAd">
-        <button class="ad-close" onclick="closeStickyAd()">×</button>
-        <div class="ad-content">
-            <div class="ad-label">Publicité</div>
-            <div class="ad-placeholder">📱 Mobile Sticky Banner - 320x50</div>
+            <div class="content-grid">
+                <article class="content-card">
+                    <h3>Utiliser la calculatrice</h3>
+                    <p>Notre calculatrice en ligne vous permet d'effectuer des opérations mathématiques rapidement et avec précision. Voici comment l'utiliser :</p>
+                    <ol>
+                        <li><strong>Saisir une expression :</strong> Cliquez sur les boutons numériques pour entrer vos chiffres. Utilisez les opérateurs (+, &minus;, &times;, &#247;) pour construire votre expression mathématique.</li>
+                        <li><strong>Utiliser les parenthèses :</strong> Pour les calculs complexes, utilisez les parenthèses ( ) afin de contrôler l'ordre des opérations. Par exemple, <code>(5 + 3) &times; 2</code> donnera 16 au lieu de 11.</li>
+                        <li><strong>Aperçu en temps réel :</strong> Le résultat s'affiche automatiquement au fur et à mesure que vous tapez votre expression, sans avoir besoin d'appuyer sur le bouton égal.</li>
+                        <li><strong>Corriger une erreur :</strong> Utilisez le bouton &#9003; pour supprimer le dernier caractère, ou appuyez sur C pour effacer toute l'expression et recommencer.</li>
+                        <li><strong>Obtenir le résultat final :</strong> Appuyez sur le bouton = pour valider le calcul. Le résultat deviendra la nouvelle expression, vous permettant de continuer vos calculs.</li>
+                    </ol>
+                </article>
+
+                <article class="content-card">
+                    <h3>Utiliser le convertisseur d'unités</h3>
+                    <p>Le convertisseur intégré prend en charge 8 catégories de conversion et des dizaines d'unités différentes. Voici la marche à suivre :</p>
+                    <ol>
+                        <li><strong>Choisir la catégorie :</strong> Sélectionnez le type de conversion souhaité : longueur, aire, volume, masse, température, vitesse, temps ou données numériques.</li>
+                        <li><strong>Entrer la valeur :</strong> Utilisez d'abord la calculatrice pour saisir la valeur à convertir. Passez ensuite à l'onglet Convertisseur : la valeur calculée sera automatiquement utilisée.</li>
+                        <li><strong>Sélectionner les unités :</strong> Choisissez l'unité source dans le menu « De » et l'unité cible dans le menu « Vers ».</li>
+                        <li><strong>Inverser la conversion :</strong> Cliquez sur le bouton &#8644; pour échanger rapidement les unités source et cible.</li>
+                        <li><strong>Consulter l'historique :</strong> Vos 5 dernières conversions sont conservées dans l'historique récent pour référence rapide.</li>
+                    </ol>
+                </article>
+            </div>
+        </section>
+
+        <!-- Unit Conversion Guide -->
+        <section class="content-section">
+            <h2>Guide complet de conversion d'unités</h2>
+            <p>Comprendre les conversions d'unités est essentiel dans de nombreux domaines : sciences, ingénierie, cuisine, voyages et vie quotidienne. Voici un guide détaillé des principales catégories de conversion disponibles dans notre outil.</p>
+
+            <article class="content-card">
+                <h3>Conversions de longueur</h3>
+                <p>La longueur est l'une des grandeurs physiques les plus couramment mesurées. Le Système international d'unités (SI) utilise le <strong>mètre</strong> comme unité de base. Voici les principales équivalences :</p>
+                <div class="conversion-table">
+                    <table>
+                        <thead>
+                            <tr><th>Conversion</th><th>Équivalence</th><th>Utilisation courante</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 kilomètre (km)</td><td>1 000 mètres</td><td>Distances routières, géographie</td></tr>
+                            <tr><td>1 mètre (m)</td><td>100 centimètres</td><td>Taille humaine, dimensions de pièces</td></tr>
+                            <tr><td>1 centimètre (cm)</td><td>10 millimètres</td><td>Mesures précises, couture</td></tr>
+                            <tr><td>1 mile (mi)</td><td>1 609,34 mètres</td><td>Distances aux États-Unis et au Royaume-Uni</td></tr>
+                            <tr><td>1 yard (yd)</td><td>0,9144 mètre</td><td>Sports (football américain), textile</td></tr>
+                            <tr><td>1 pied (ft)</td><td>30,48 centimètres</td><td>Aviation, construction (pays anglo-saxons)</td></tr>
+                            <tr><td>1 pouce (in)</td><td>2,54 centimètres</td><td>Écrans, tuyauterie, vis</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Le système métrique, adopté par la majorité des pays du monde, offre l'avantage d'être basé sur des puissances de 10, ce qui facilite grandement les conversions. Par exemple, pour convertir des kilomètres en mètres, il suffit de multiplier par 1 000. Le système impérial, encore utilisé aux États-Unis, au Royaume-Uni et dans quelques autres pays, nécessite des facteurs de conversion spécifiques.</p>
+            </article>
+
+            <article class="content-card">
+                <h3>Conversions de température</h3>
+                <p>La température est une grandeur physique qui se mesure avec trois échelles principales. Contrairement aux autres unités, les conversions de température ne sont pas de simples multiplications car les échelles ont des points zéro différents.</p>
+
+                <h4>Les trois échelles de température</h4>
+                <ul>
+                    <li><strong>Celsius (°C) :</strong> Utilisée dans la majorité des pays du monde. L'eau gèle à 0 °C et bout à 100 °C à pression atmosphérique normale. Inventée par Anders Celsius en 1742.</li>
+                    <li><strong>Fahrenheit (°F) :</strong> Principalement utilisée aux États-Unis. L'eau gèle à 32 °F et bout à 212 °F. Créée par Daniel Gabriel Fahrenheit en 1724.</li>
+                    <li><strong>Kelvin (K) :</strong> Unité du Système international, utilisée en sciences. Le zéro absolu (0 K = &minus;273,15 °C) est la température théorique la plus basse possible. Pas de degré devant le K.</li>
+                </ul>
+
+                <h4>Formules de conversion</h4>
+                <ul>
+                    <li><strong>Celsius vers Fahrenheit :</strong> °F = (°C &times; 9/5) + 32</li>
+                    <li><strong>Fahrenheit vers Celsius :</strong> °C = (°F &minus; 32) &times; 5/9</li>
+                    <li><strong>Celsius vers Kelvin :</strong> K = °C + 273,15</li>
+                    <li><strong>Kelvin vers Celsius :</strong> °C = K &minus; 273,15</li>
+                </ul>
+
+                <p><strong>Astuce pratique :</strong> Pour une estimation rapide de Celsius en Fahrenheit, doublez la valeur en Celsius et ajoutez 30. Par exemple, 20 °C ≈ (20 &times; 2) + 30 = 70 °F (valeur exacte : 68 °F). Cette méthode est suffisamment précise pour un usage quotidien.</p>
+            </article>
+
+            <article class="content-card">
+                <h3>Conversions de masse</h3>
+                <p>La masse mesure la quantité de matière d'un objet. Le <strong>kilogramme</strong> est l'unité de base du SI. Ne confondez pas masse et poids : la masse est constante, tandis que le poids dépend de la gravité.</p>
+                <div class="conversion-table">
+                    <table>
+                        <thead>
+                            <tr><th>Conversion</th><th>Équivalence</th><th>Utilisation courante</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1 tonne (t)</td><td>1 000 kilogrammes</td><td>Industrie, transport de marchandises</td></tr>
+                            <tr><td>1 kilogramme (kg)</td><td>1 000 grammes</td><td>Poids corporel, courses alimentaires</td></tr>
+                            <tr><td>1 gramme (g)</td><td>0,001 kilogramme</td><td>Cuisine, pharmacie</td></tr>
+                            <tr><td>1 livre (lb)</td><td>453,592 grammes</td><td>Commerce (pays anglo-saxons)</td></tr>
+                            <tr><td>1 once (oz)</td><td>28,3495 grammes</td><td>Cuisine, métaux précieux</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="content-card">
+                <h3>Conversions de données numériques</h3>
+                <p>Dans le domaine informatique, les données se mesurent en octets (bytes en anglais). Le système utilise des puissances de 2 (système binaire) plutôt que des puissances de 10 :</p>
+                <ul>
+                    <li><strong>1 kilooctet (Ko)</strong> = 1 024 octets (et non 1 000). C'est la taille approximative d'un court message texte.</li>
+                    <li><strong>1 mégaoctet (Mo)</strong> = 1 024 Ko = 1 048 576 octets. Environ la taille d'une photo compressée ou d'une minute de musique MP3.</li>
+                    <li><strong>1 gigaoctet (Go)</strong> = 1 024 Mo = 1 073 741 824 octets. Environ 250 chansons MP3 ou 1 heure de vidéo en définition standard.</li>
+                </ul>
+                <p>Cette distinction entre les préfixes binaires (1 024) et décimaux (1 000) est une source fréquente de confusion. Les fabricants de disques durs utilisent souvent les préfixes décimaux, ce qui explique pourquoi un disque vendu comme « 1 To » affiche environ 931 Go dans le système d'exploitation.</p>
+            </article>
+
+            <article class="content-card">
+                <h3>Conversions de vitesse</h3>
+                <p>La vitesse exprime le rapport entre une distance parcourue et le temps mis pour la parcourir. Les unités les plus courantes sont :</p>
+                <ul>
+                    <li><strong>Mètres par seconde (m/s) :</strong> Unité du SI, utilisée en physique. La vitesse du son dans l'air est d'environ 343 m/s.</li>
+                    <li><strong>Kilomètres par heure (km/h) :</strong> Unité courante pour les vitesses routières en Europe, Asie et Afrique. 1 km/h = 0,2778 m/s.</li>
+                    <li><strong>Miles par heure (mph) :</strong> Utilisée aux États-Unis et au Royaume-Uni pour les vitesses routières. 1 mph = 1,60934 km/h.</li>
+                </ul>
+                <p><strong>Astuce :</strong> Pour convertir rapidement des km/h en m/s, divisez par 3,6. Par exemple, 90 km/h &#247; 3,6 = 25 m/s.</p>
+            </article>
+        </section>
+
+        <!-- Mathematical Formulas Section -->
+        <section class="content-section">
+            <h2>Formules mathématiques essentielles</h2>
+            <p>Voici un aide-mémoire des formules mathématiques les plus utilisées, que vous pouvez vérifier directement avec notre calculatrice.</p>
+
+            <div class="content-grid">
+                <article class="content-card">
+                    <h3>Géométrie</h3>
+                    <ul>
+                        <li><strong>Aire d'un cercle :</strong> A = &pi; &times; r&sup2;</li>
+                        <li><strong>Périmètre d'un cercle :</strong> P = 2 &times; &pi; &times; r</li>
+                        <li><strong>Aire d'un rectangle :</strong> A = longueur &times; largeur</li>
+                        <li><strong>Aire d'un triangle :</strong> A = (base &times; hauteur) / 2</li>
+                        <li><strong>Volume d'une sphère :</strong> V = (4/3) &times; &pi; &times; r&sup3;</li>
+                        <li><strong>Volume d'un cylindre :</strong> V = &pi; &times; r&sup2; &times; h</li>
+                        <li><strong>Théorème de Pythagore :</strong> a&sup2; + b&sup2; = c&sup2;</li>
+                    </ul>
+                </article>
+
+                <article class="content-card">
+                    <h3>Arithmétique et algèbre</h3>
+                    <ul>
+                        <li><strong>Pourcentage :</strong> (partie / total) &times; 100</li>
+                        <li><strong>Moyenne :</strong> somme des valeurs / nombre de valeurs</li>
+                        <li><strong>Identité remarquable :</strong> (a + b)&sup2; = a&sup2; + 2ab + b&sup2;</li>
+                        <li><strong>Identité remarquable :</strong> (a &minus; b)&sup2; = a&sup2; &minus; 2ab + b&sup2;</li>
+                        <li><strong>Différence de carrés :</strong> a&sup2; &minus; b&sup2; = (a + b)(a &minus; b)</li>
+                        <li><strong>Règle de trois :</strong> Si a &rarr; b, alors x &rarr; (x &times; b) / a</li>
+                    </ul>
+                </article>
+
+                <article class="content-card">
+                    <h3>Calculs financiers</h3>
+                    <ul>
+                        <li><strong>Intérêt simple :</strong> I = Capital &times; Taux &times; Durée</li>
+                        <li><strong>Intérêt composé :</strong> Montant = Capital &times; (1 + taux)^n</li>
+                        <li><strong>TVA :</strong> Prix TTC = Prix HT &times; (1 + taux TVA / 100)</li>
+                        <li><strong>Remise :</strong> Prix remisé = Prix &times; (1 &minus; remise / 100)</li>
+                        <li><strong>Marge bénéficiaire :</strong> Marge = (Prix de vente &minus; Coût) / Prix de vente &times; 100</li>
+                    </ul>
+                </article>
+
+                <article class="content-card">
+                    <h3>Conversions de temps utiles</h3>
+                    <ul>
+                        <li><strong>1 heure</strong> = 60 minutes = 3 600 secondes</li>
+                        <li><strong>1 jour</strong> = 24 heures = 1 440 minutes = 86 400 secondes</li>
+                        <li><strong>1 semaine</strong> = 7 jours = 168 heures</li>
+                        <li><strong>1 année</strong> = 365,25 jours (en moyenne, tenant compte des années bissextiles)</li>
+                        <li><strong>Astuce :</strong> Pour convertir des minutes en heures décimales, divisez par 60. Exemple : 45 minutes = 0,75 heure.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="content-section">
+            <h2>Questions fréquemment posées</h2>
+
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>La calculatrice Nexus est-elle gratuite ?</summary>
+                    <p>Oui, Nexus Calculator Pro est entièrement gratuit et le restera. Aucune inscription n'est requise. Vous pouvez l'utiliser autant de fois que vous le souhaitez, sans aucune limitation. L'outil est financé par la publicité affichée sur le site, ce qui nous permet de maintenir un service gratuit et de qualité pour tous les utilisateurs.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Les calculs sont-ils précis ?</summary>
+                    <p>Oui, notre calculatrice utilise le moteur de calcul JavaScript intégré au navigateur, qui offre une précision en virgule flottante double précision (64 bits, norme IEEE 754). Cela signifie que les résultats sont précis jusqu'à environ 15-17 chiffres significatifs. Pour les conversions d'unités, nous utilisons les facteurs de conversion officiels du Système international d'unités (SI) et les standards internationaux reconnus.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Puis-je utiliser la calculatrice sur mon téléphone ?</summary>
+                    <p>Absolument. Nexus Calculator Pro est conçu avec une approche « responsive design », ce qui signifie que l'interface s'adapte automatiquement à la taille de votre écran. Que vous utilisiez un smartphone, une tablette ou un ordinateur de bureau, l'outil fonctionnera parfaitement. Les boutons sont dimensionnés pour être facilement utilisables au toucher sur les appareils mobiles.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Quelles catégories de conversion sont disponibles ?</summary>
+                    <p>Notre convertisseur prend en charge 8 catégories de conversion : <strong>Longueur</strong> (mètres, kilomètres, miles, pieds, pouces, etc.), <strong>Aire</strong> (mètres carrés, hectares, pieds carrés), <strong>Volume</strong> (litres, millilitres, mètres cubes, gallons), <strong>Masse</strong> (kilogrammes, grammes, livres, onces), <strong>Température</strong> (Celsius, Fahrenheit, Kelvin), <strong>Vitesse</strong> (m/s, km/h, mph), <strong>Temps</strong> (secondes, minutes, heures, jours) et <strong>Données numériques</strong> (octets, Ko, Mo, Go). Chaque catégorie utilise les facteurs de conversion officiels pour garantir des résultats exacts.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Mes données sont-elles enregistrées ?</summary>
+                    <p>Non. Nexus Calculator Pro fonctionne entièrement dans votre navigateur. Aucun calcul ni aucune conversion n'est envoyé à un serveur. L'historique de conversion est conservé uniquement pendant votre session de navigation et disparaît lorsque vous fermez la page. Nous ne collectons aucune donnée personnelle liée à vos calculs.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Comment fonctionne l'ordre des opérations ?</summary>
+                    <p>Notre calculatrice respecte l'ordre standard des opérations mathématiques (PEMDAS/BODMAS) : les parenthèses sont évaluées en premier, puis les multiplications et divisions (de gauche à droite), et enfin les additions et soustractions (de gauche à droite). Utilisez les parenthèses pour forcer un ordre de calcul spécifique. Par exemple, <code>2 + 3 &times; 4</code> donnera 14 (et non 20), car la multiplication est prioritaire.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Quelle est la différence entre le système métrique et le système impérial ?</summary>
+                    <p>Le <strong>système métrique</strong> (ou Système international d'unités, SI) est basé sur des multiples de 10, ce qui le rend très intuitif. Il est utilisé par la quasi-totalité des pays du monde. Le <strong>système impérial</strong> utilise des unités comme les pouces, pieds, yards, miles, livres et onces, avec des facteurs de conversion irréguliers. Il est principalement utilisé aux États-Unis, au Royaume-Uni (partiellement) et dans quelques autres pays. Notre convertisseur vous permet de passer facilement de l'un à l'autre.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="content-section">
+            <h2>Astuces et raccourcis de calcul mental</h2>
+            <p>Maîtriser le calcul mental est une compétence précieuse au quotidien. Voici quelques techniques éprouvées pour effectuer des calculs rapidement dans votre tête, que vous pouvez ensuite vérifier avec notre calculatrice.</p>
+
+            <div class="content-grid">
+                <article class="content-card">
+                    <h3>Multiplier par 5 rapidement</h3>
+                    <p>Pour multiplier un nombre par 5, multipliez-le d'abord par 10 puis divisez par 2. C'est souvent plus simple que de multiplier directement par 5.</p>
+                    <p><strong>Exemple :</strong> 48 &times; 5 = 48 &times; 10 / 2 = 480 / 2 = 240</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>Calculer un pourcentage</h3>
+                    <p>Pour calculer X% de Y, sachez que X% de Y = Y% de X. Choisissez le calcul le plus simple. De plus, 10% d'un nombre, c'est simplement ce nombre divisé par 10.</p>
+                    <p><strong>Exemple :</strong> 8% de 50 = 50% de 8 = 4. Beaucoup plus simple !</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>La règle du 72</h3>
+                    <p>Pour estimer le temps de doublement d'un investissement, divisez 72 par le taux d'intérêt annuel. Cette règle est utilisée par les professionnels de la finance.</p>
+                    <p><strong>Exemple :</strong> À un taux de 6%, un investissement doublera en environ 72 / 6 = 12 ans.</p>
+                </article>
+
+                <article class="content-card">
+                    <h3>Multiplier par 11</h3>
+                    <p>Pour multiplier un nombre à deux chiffres par 11, additionnez les deux chiffres et placez le résultat entre eux. Si la somme dépasse 9, reportez la dizaine.</p>
+                    <p><strong>Exemple :</strong> 36 &times; 11 : 3_(3+6)_6 = 396. Pour 85 &times; 11 : 8_(8+5)_5 = 8_(13)_5 = 935.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" id="a-propos">
+                    <h3>À propos de Nexus Calculator Pro</h3>
+                    <p>Nexus Calculator Pro est un outil de calcul et de conversion d'unités en ligne, conçu pour être rapide, précis et accessible à tous. Notre mission est de fournir un service gratuit de qualité qui aide les étudiants, les professionnels et le grand public dans leurs calculs quotidiens. L'outil est développé et maintenu avec passion, et nous nous efforçons de l'améliorer continuellement en ajoutant de nouvelles fonctionnalités et catégories de conversion.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="#calculatrice">Calculatrice</a></li>
+                        <li><a href="#convertisseur">Convertisseur</a></li>
+                        <li><a href="#guide">Guide d'utilisation</a></li>
+                        <li><a href="#faq">Questions fréquentes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Pour toute question, suggestion ou signalement de bug, n'hésitez pas à nous contacter :</p>
+                    <p><strong>Email :</strong> contact@nexus-calculator.onrender.com</p>
+                    <p>Nous répondons généralement sous 48 heures.</p>
+                </div>
+            </div>
+
+            <div class="footer-section" id="privacy">
+                <h3>Politique de confidentialité</h3>
+                <p>Nexus Calculator Pro respecte votre vie privée. Voici les points essentiels de notre politique :</p>
+                <ul>
+                    <li><strong>Aucune donnée personnelle collectée :</strong> Nous ne demandons ni nom, ni email, ni aucune information personnelle pour utiliser notre outil.</li>
+                    <li><strong>Calculs locaux :</strong> Tous les calculs et conversions sont effectués directement dans votre navigateur. Aucune donnée de calcul n'est transmise à nos serveurs.</li>
+                    <li><strong>Cookies :</strong> Nous utilisons uniquement les cookies nécessaires au fonctionnement du site et ceux de Google AdSense pour afficher des publicités pertinentes. Google peut utiliser des cookies pour personnaliser les annonces en fonction de vos centres d'intérêt. Vous pouvez gérer vos préférences de cookies dans les paramètres de votre navigateur.</li>
+                    <li><strong>Publicité :</strong> Ce site utilise Google AdSense pour afficher des publicités. Google, en tant que fournisseur tiers, utilise des cookies pour diffuser des annonces basées sur les visites précédentes de l'utilisateur sur ce site ou sur d'autres sites. Vous pouvez désactiver l'utilisation de cookies par Google en consultant la page <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Paramètres des annonces Google</a>.</li>
+                    <li><strong>Données analytiques :</strong> Nous pouvons collecter des données anonymes d'utilisation (nombre de visites, pages consultées) afin d'améliorer notre service. Ces données ne permettent pas de vous identifier personnellement.</li>
+                </ul>
+                <p>En utilisant Nexus Calculator Pro, vous acceptez cette politique de confidentialité. Pour toute question concernant vos données, contactez-nous à l'adresse indiquée ci-dessus.</p>
+                <p><em>Dernière mise à jour : janvier 2026</em></p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nexus Calculator Pro. Tous droits réservés. Outil de calcul et de conversion d'unités en ligne.</p>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
