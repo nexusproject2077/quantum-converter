@@ -22,6 +22,15 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+html, body {
+    display: block;
+    position: static;
+    overflow-y: auto;
+    height: auto;
+    width: 100%;
 }
 
 body {
@@ -43,6 +52,7 @@ body {
     background: rgba(21, 27, 46, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    width: 100%;
 }
 
 .nav-inner {
